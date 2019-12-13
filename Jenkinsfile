@@ -29,12 +29,13 @@ node('master') {
         currentBranch = scm.branches[0].name
         jiraSendBuildInfo branch: "${currentBranch}", site: 'techamigos.atlassian.net'
 
-
       }
 
       stage("Final check - Workspace and ls..."){
         echo "${WORKSPACE}"
         sh 'ls'
+        jiraSendDeploymentInfo branch: "${currentBranch}", site: 'techamigos.atlassian.net', environmentId: 'eu-west-2', environmentName: 'eu-west-2', environmentType: 'production'
+
       }
 
       } catch(Exception e) {
