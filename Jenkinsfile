@@ -32,7 +32,6 @@ node('master') {
       stage("Final check - Workspace and ls..."){
         echo "${WORKSPACE}"
         sh 'ls'
-        jiraSendDeploymentInfo branch: "${currentBranch}", site: 'techamigos.atlassian.net', environmentId: 'eu-west-2', environmentName: 'eu-west-2', environmentType: 'Production'
         jiraSendDeploymentInfo branch: "${currentBranch}", site: 'techamigos.atlassian.net', environmentId: 'eu-west-2', environmentName: 'eu-west-2', environmentType: 'Development'
 
       }
