@@ -22,11 +22,9 @@ node('master') {
         docker rmi nodejstest
         ls -a
         '''
-        post {
-          always {
-            jiraSendBuildInfo site: 'techamigos.atlassian.net'
-              }
-        }
+
+        jiraSendBuildInfo branch: 'JIT-1', site: 'techamigos.atlassian.net'
+
       }
 
       stage("Final check - Workspace and ls..."){
