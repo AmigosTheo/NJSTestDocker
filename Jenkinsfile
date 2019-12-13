@@ -18,7 +18,6 @@ node('master') {
         sh'''
         docker build -t nodejstest .
         docker images
-        ls -a
         docker rmi nodejstest
         ls -a
         '''
