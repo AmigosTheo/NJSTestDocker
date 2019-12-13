@@ -11,7 +11,6 @@ node('master') {
       cleanWs()
       deleteDir()
       checkout scm
-      currentBranch = scm.branches[0].name
 
       }
 
@@ -24,6 +23,8 @@ node('master') {
         ls -a
         '''
 
+        println scm.branches[0].name
+        currentBranch = scm.branches[0].name
         jiraSendBuildInfo branch: '${currentBranch}', site: 'techamigos.atlassian.net'
 
       }
