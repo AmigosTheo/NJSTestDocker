@@ -23,19 +23,18 @@ node('master') {
         ls -a
         '''
 
-
         // This is the Jira Feedback Code for the Build Info stage
         println scm.branches[0].name
         currentBranch = scm.branches[0].name
         jiraSendBuildInfo branch: "${currentBranch}", site: 'techamigos.atlassian.net'
-        //
-
-
       }
 
       stage("Final check - Workspace and ls..."){
         echo "${WORKSPACE}"
         sh 'ls'
+        jiraSendDeploymentInfo branch: "${currentBranch}", site: 'techamigos.atlassian.net', environmentId: 'eu-west-2', environmentName: 'eu-west-2', environmentType: 'development'
+        jiraSendDeploymentInfo branch: "${currentBranch}", site: 'techamigos.atlassian.net', environmentId: 'eu-west-2', environmentName: 'eu-west-2', environmentType: 'staging'
+
       }
 
       } catch(Exception e) {
