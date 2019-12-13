@@ -34,7 +34,6 @@ node('master') {
         sh 'ls'
         currentBranch = scm.branches[0].name
         jiraSendDeploymentInfo branch: "${currentBranch}", site: 'techamigos.atlassian.net', environmentId: 'eu-west-2', environmentName: 'eu-west-2', environmentType: 'development'
-
       }
 
       } catch(Exception e) {
