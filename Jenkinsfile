@@ -32,6 +32,8 @@ node('master') {
         echo "${WORKSPACE}"
         sh 'ls'
         currentBranch = scm.branches[0].name
+
+        // This is the Jira Feedback Code for the Deployment Info stage
         jiraSendDeploymentInfo branch: "${currentBranch}", site: 'techamigos.atlassian.net', environmentId: 'eu-west-2', environmentName: 'eu-west-2', environmentType: 'development'
       }
 
