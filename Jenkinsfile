@@ -25,7 +25,7 @@ node('master') {
 
         println scm.branches[0].name
         currentBranch = scm.branches[0].name
-        jiraSendBuildInfo branch: '${currentBranch}', site: 'techamigos.atlassian.net'
+        jiraSendBuildInfo branch: "${currentBranch}", site: 'techamigos.atlassian.net'
       }
 
       stage("Final check - Workspace and ls..."){
