@@ -23,7 +23,6 @@ node('master') {
         ls -a
         '''
 
-
         // This is the Jira Feedback Code for the Build Info stage
         println scm.branches[0].name
         currentBranch = scm.branches[0].name
