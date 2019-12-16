@@ -16,7 +16,7 @@ node('master') {
 
       stage("2: Creating docker container..."){
         // This is the Jira Feedback Code for the Build Info stage
-        slackSend color: 'good', message: 'Message from Jenkins Pipeline'
+        slackSend color: 'good', message: 'JIT-4: Pipeline run successfully! '
       }
 
       } catch(Exception e) {
