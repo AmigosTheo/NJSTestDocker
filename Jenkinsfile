@@ -16,10 +16,6 @@ node('master') {
 
       stage("2: Creating docker container..."){
         sh'''
-        docker build -t nodejstest .
-        docker images
-        ls -a
-        docker rmi nodejstest
         ls -a
         '''
 
@@ -35,6 +31,10 @@ node('master') {
         jiraSendDeploymentInfo branch: "${currentBranch}", site: 'techamigos.atlassian.net', environmentId: 'eu-west-2', environmentName: 'eu-west-2', environmentType: 'development'
         jiraSendDeploymentInfo branch: "${currentBranch}", site: 'techamigos.atlassian.net', environmentId: 'eu-west-2', environmentName: 'eu-west-2', environmentType: 'staging'
 
+      }
+
+      stage("BUILD SUCCEED") {
+        slackSend (color: '#00FF00', message: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' requires further authorisation")
       }
 
       } catch(Exception e) {
